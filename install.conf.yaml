@@ -1,5 +1,7 @@
-- clean: ['~']
+- shell:
+        - command: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=~/.local launch=n
+          stdout: true
 
 - link:
-
-
+        ~/.config/kitty/kitty.conf:
+                path: config/kitty/kitty.conf
