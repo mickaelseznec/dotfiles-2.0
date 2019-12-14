@@ -1,0 +1,53 @@
+AddKeysToAgent yes
+
+Host *
+    XAuthLocation /usr/X11/bin/xauth
+
+Host casemate
+    User seznec
+    Hostname casemate.lss.supelec.fr
+    ForwardAgent yes
+    PasswordAuthentication yes
+    ForwardX11 yes
+    ForwardX11Timeout 596h
+    Port 8506
+
+Host bebe2_out
+    user seznec
+    hostname bebe2.l2s.centralesupelec.fr
+    ControlMaster auto
+    ControlPath ~/.ssh/socket2-%r@%h:%p
+    Protocol 2
+    PasswordAuthentication yes
+    ForwardAgent yes
+    ForwardX11 yes
+    ForwardX11Timeout 596h
+    ProxyJump casemate
+
+Host president_out
+    user seznec
+    hostname president.lss.supelec.fr
+    ControlMaster auto
+    ControlPath ~/.ssh/socket2-%r@%h:%p
+    Protocol 2
+    PasswordAuthentication yes
+    ForwardAgent yes
+    ForwardX11 yes
+    ForwardX11Timeout 596h
+    ProxyJump casemate
+
+Host beta_out
+   user seznec
+   hostname beta.l2s.centralesupelec.fr
+   ControlMaster auto
+   ControlPath ~/.ssh/socket2-%r@%h:%p
+   Protocol 2
+   PasswordAuthentication yes
+   ForwardAgent yes
+   ForwardX11 yes
+   ForwardX11Timeout 596h
+   ProxyJump casemate
+
+Host bebe2
+   user seznec
+   hostname bebe2.l2s.centralesupelec.fr

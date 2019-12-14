@@ -4,11 +4,6 @@ source $HOME/.dotfiles/shell/local.sh
 source $HOME/.dotfiles/shell/common.zsh
 source $HOME/.dotfiles/shell/zsh_plugins.sh
 
-[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-
-# colorscheme
-base16_snazzy
-
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 autoload -U colors && colors
@@ -104,3 +99,15 @@ if [[ -d $HOME/Téléchargements ]]; then
 else
     hash -d d=$HOME/Downloads
 fi
+
+# Setup fzf
+# ---------
+append_path_unique $HOME/.dotfiles/fzf/bin
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "$HOME/.dotfiles/fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+# ------------
+source "$HOME/.dotfiles/fzf/shell/key-bindings.zsh"

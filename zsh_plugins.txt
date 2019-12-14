@@ -1,4 +1,3 @@
-chriskempson/base16-shell
 mafredri/zsh-async
 sindresorhus/pure
 

@@ -2,6 +2,7 @@ export EDITOR='vim'
 export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
 export FZF_DEFAULT_COMMAND='rg --files'
+export LC_ALL="en_US.UTF-8"
 
 # Watch other user login/out
 watch=notme
@@ -23,9 +24,13 @@ export REPORTTIME=30 # Say how long a command took, if it took more than 30 seco
 [[ -z $SSH_AGENT_PID ]] && eval $(ssh-agent) > /dev/null
 on_linux && setxkbmap -option caps:swapescape
 
-if [[ $PATH != *"$HOME/.local/bin"* ]]; then
-    export PATH="$HOME/.local/bin:$PATH"
+if on_linux; then
+    append_path_unique "$HOME/.local/kitty.app/bin/"
+else
+    append_path_unique "$HOME/.local/kitty.app/Contents/MacOS/"
 fi
+
+prepend_path_unique "$HOME/.local/bin"
 
 if [[ -n CONDA_PATH ]]; then
     __conda_setup="$(CONDA_REPORT_ERRORS=false "$CONDA_PATH/bin/conda" shell.bash hook 2> /dev/null)"

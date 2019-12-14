@@ -22,6 +22,21 @@ mkcd()
     mkdir -p $1 && cd $1
 }
 
+prepend_path_unique()
+{
+    if [[ $PATH != *$1* ]]; then
+        export PATH="$1:$PATH"
+    fi
+}
+
+append_path_unique()
+{
+    if [[ $PATH != *$1* ]]; then
+        export PATH="$PATH:$1"
+    fi
+}
+
+
 # extract the files
 extract()
 {

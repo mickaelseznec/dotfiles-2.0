@@ -1,5 +1,3 @@
-source /Users/mickaelseznec/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-chriskempson-SLASH-base16-shell/base16-shell.plugin.zsh
-fpath+=( /Users/mickaelseznec/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-chriskempson-SLASH-base16-shell )
 source /Users/mickaelseznec/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-mafredri-SLASH-zsh-async/async.plugin.zsh
 fpath+=( /Users/mickaelseznec/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-mafredri-SLASH-zsh-async )
 source /Users/mickaelseznec/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-sindresorhus-SLASH-pure/pure.plugin.zsh
