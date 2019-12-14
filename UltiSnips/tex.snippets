@@ -1,0 +1,125 @@
+priority 0
+
+snippet beamer "Beamer template" b
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage[francais]{babel}
+\usepackage{blindtext}
+\usepackage[outputdir=build]{minted}
+
+\usetheme[numbering=none]{focus}
+\definecolor{main}{RGB}{36, 42, 117}
+\definecolor{background}{RGB}{255, 255, 255}
+\definecolor{alert}{RGB}{133, 27, 85}
+\definecolor{example}{RGB}{139, 153, 0}
+
+\title{$1}
+\subtitle{$2}
+\author{Mickaël Seznec}
+\institute{$3}
+\date{$4}
+
+\begin{document}
+	\begin{frame}
+		\maketitle
+	\end{frame}
+
+	\appendix
+\end{document}
+endsnippet
+
+snippet fig "Figure environment" b
+\begin{figure}[${2:H}]
+	\centering
+	\includegraphics[width=${3:0.8}\textwidth]{${4:name.ext}}
+	\caption{$0}
+	\label{fig:${4/(\w+)\.\w+/$1/}}
+\end{figure}
+endsnippet
+
+snippet col2 "Columns environment" b
+\begin{columns}
+	\begin{column}{${1:0.5\textwidth}}
+	$0
+	\end{column}
+	\begin{column}{${2:0.5\textwidth}}
+	\end{column}
+\end{columns}
+endsnippet
+
+snippet frame "Frame environment" b
+\begin{frame}{$1}
+	$0
+\end{frame}
+endsnippet
+
+snippet al "Align environment" b
+\begin{align}
+	$0
+\end{align}
+endsnippet
+
+snippet al* "Align* environment" b
+\begin{align*}
+	$0
+\end{align*}
+endsnippet
+
+snippet ita "italic text" b
+\textit{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+snippet bm "bold math text"
+\bm{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+snippet bf "bold face text"
+\textbf{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+snippet under "underline text" b
+\underline{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+snippet over "overline text" b
+\overline{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+snippet emp "emphasize text" b
+\emph{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+snippet sc "small caps text" b
+\textsc{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+#Choosing font
+snippet sf "sans serife text" b
+\extsf{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+snippet rm "roman font text" b
+\textrm{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+snippet tt "typewriter (monospace) text" b
+\texttt{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+#Math font
+snippet mf "mathfrak" b
+\mathfrak{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+snippet mc "mathcal" b
+\mathcal"{${1:${VISUAL:text}}} ${0}" b
+endsnippet
+
+snippet ms "mathscr" b
+\mathscr{${1:${VISUAL:text}}} ${0}
+endsnippet
+
+#misc
+snippet ft "\footnote" b
+\footnote{${1:${VISUAL:text}}} ${0}
+endsnippet

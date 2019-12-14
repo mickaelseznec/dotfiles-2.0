@@ -1,0 +1,4 @@
+#include "$HOME/.config/Xresources.d/xft"
+#include "$HOME/.config/Xresources.d/xcursor"
+#include "$HOME/.config/Xresources.d/urxvt"
+#include "$HOME/.config/Xresources.d/colors"

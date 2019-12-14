@@ -1,7 +1,59 @@
 - shell:
-        - command: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=~/.local launch=n
           stdout: true
 
+- defaults:
+    link:
+        create: true
+        relink: true
+    shell:
+        stdout: true
+
+- clean:
+    '~':
+        force: true
+    '~/.config':
+        force: true
+
+- shell:
+    - command: envsubst < Xresources.template > Xresources
+
+- create:
+    - '~/.vim/undo'
+    - '~/.vim/backup'
+    - '~/.tmux/plugins'
+    - '~/.local/bin'
+
 - link:
-        ~/.config/kitty/kitty.conf:
-                path: config/kitty/kitty.conf
+    '~/.bashrc':
+    '~/.gdbinit':
+    '~/.gitconfig':
+    '~/.gitignore_global':
+    '~/.tmux.conf':
+    '~/.vimrc':
+    '~/.vim/UltiSnips':
+    '~/.Xresources':
+    '~/.zshrc':
+    '~/.config/':
+        glob: true
+        path: config/*
+        relink: true
+
+- link:
+    '~/.vim/bundle/Vundle.vim':
+        'force': true
+    '~/.tmux/plugins/tpm':
+        'force': true
+
+- shell:
+    - vim -c PluginInstall -c ':qa'
+
+    - ./fzf/install --xdg --completion --key-bindings --no-update-rc --no-fish
+
+    - curl -sfL git.io/antibody | sh -s - -b ~/.local/bin/
+    - ~/.local/bin/antibody bundle < zsh_plugins.txt > shell/zsh_plugins.sh
+
+    - chsh -s $(which zsh)
+
+    - curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=~/.local launch=n
+
+    - 'echo -e "Remember to: \n\t- Install font (ie Fantasque) \n\t- Install tmux plugins (C-A + I) \n\t- Install newer vim if needed (sudo add-apt-repository ppa:jonathonf/vim) \n\t- Install ripgrep from https://github.com/BurntSushi/ripgrep/releases/"'
