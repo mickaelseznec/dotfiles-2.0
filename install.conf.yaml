@@ -1,6 +1,3 @@
-- shell:
-          stdout: true
-
 - defaults:
     link:
         create: true
@@ -15,7 +12,9 @@
         force: true
 
 - shell:
-    - command: envsubst < Xresources.template > Xresources
+    -
+        - perl -pe 's/\$(\w+)/$ENV{$1}/g' Xresources.template > Xresources # Some perl magic
+        - Generating Xresources
 
 - create:
     - '~/.vim/undo'
@@ -46,14 +45,14 @@
         'force': true
 
 - shell:
-    - vim -c PluginInstall -c ':qa'
+    - [vim -c PluginInstall -c ':qa', Installing Vim Plugins]
 
-    - curl -sfL git.io/antibody | sh -s - -b ~/.local/bin/
-    - ~/.local/bin/antibody bundle < zsh_plugins.txt > shell/zsh_plugins.sh
+    - [curl -sfL git.io/antibody | sh -s - -b ~/.local/bin/, Installing Antibody]
+    - [~/.local/bin/antibody bundle < zsh_plugins.txt > shell/zsh_plugins.sh, Generating Zsh Plugin List]
 
-    - curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=~/.local launch=n
+    - [curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=~/.local launch=n, Installing Kitty Terminal]
 
     - 'echo -e "Remember to: \n\t- Install font (ie Fantasque) \n\t- Install tmux plugins (C-A + I) \n\t- Install newer vim if needed (sudo add-apt-repository ppa:jonathonf/vim) \n\t- Install ripgrep from https://github.com/BurntSushi/ripgrep/releases/"'
 
-    - chsh -s $(which zsh)
+    - [which zsh && chsh -s $(which zsh), Choose zsh as default shell]
 
