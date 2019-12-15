@@ -5,7 +5,4 @@
 
 # export CONDA_PATH="$HOME/anaconda3"
 
-# if is_zsh; then :;
-# else
-#     which zsh > /dev/null && exec zsh
-# fi
+# is_zsh || { which zsh > /dev/null && exec zsh; }
