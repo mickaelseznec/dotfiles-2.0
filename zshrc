@@ -102,7 +102,6 @@ fi
 
 # Setup fzf
 # ---------
-append_path_unique $HOME/.dotfiles/fzf/bin
 
 # Auto-completion
 # ---------------

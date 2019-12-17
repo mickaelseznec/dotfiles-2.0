@@ -45,13 +45,24 @@
         'force': true
 
 - shell:
+    - [fzf/install --bin]
+
+- link:
+    '~/.local/bin/fzf': 'fzf/bin/fzf'
+
+- shell:
     - [vim -c PluginInstall -c ':qa', Installing Vim Plugins]
 
     - [curl -sfL git.io/antibody | sh -s - -b ~/.local/bin/, Installing Antibody]
     - [~/.local/bin/antibody bundle < zsh_plugins.txt > shell/zsh_plugins.sh, Generating Zsh Plugin List]
 
     - [curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=~/.local launch=n, Installing Kitty Terminal]
-    - command: '[[ $(uname) == Linux ]] && cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications && sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop'
+    - command:
+        '[[ $(uname) == Linux ]]
+        && ln -sf ~/.local/kitty.app/bin/kitty ~/.local/bin/
+        && cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
+        && sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop
+        && chmod +x ~/.local/share/applications/kitty.desktop'
 
     - command: which zsh > /dev/null && chsh -s $(which zsh)
       description: Choose zsh as default shell
@@ -59,5 +70,3 @@
       stdin: true
 
     - [':', "Remember to: \n\t- Install font (ie Fantasque) \n\t- Install tmux plugins (C-A + I) \n\t- Install newer vim if needed (sudo add-apt-repository ppa:jonathonf/vim) \n\t- Install ripgrep from https://github.com/BurntSushi/ripgrep/releases/"]
-
-
