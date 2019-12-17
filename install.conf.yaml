@@ -12,15 +12,15 @@
         force: true
 
 - shell:
-    -
-        - perl -pe 's/\$(\w+)/$ENV{$1}/g' Xresources.template > Xresources # Some perl magic
-        - Generating Xresources
+    - command: perl -pe 's/\$(\w+)/$ENV{$1}/g' Xresources.template > Xresources # Some perl magic
+      description: Generating Xresources
 
 - create:
     - '~/.vim/undo'
     - '~/.vim/backup'
     - '~/.tmux/plugins'
     - '~/.local/bin'
+    - '~/.local/share/applications'
 
 - link:
     '~/.bashrc':
@@ -51,6 +51,7 @@
     - [~/.local/bin/antibody bundle < zsh_plugins.txt > shell/zsh_plugins.sh, Generating Zsh Plugin List]
 
     - [curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=~/.local launch=n, Installing Kitty Terminal]
+    - command: '[[ $(uname) == Linux ]] && cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications && sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop'
 
     - command: which zsh > /dev/null && chsh -s $(which zsh)
       description: Choose zsh as default shell

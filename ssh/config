@@ -4,6 +4,10 @@ Host rtx
     HostName D319446
     ForwardX11 yes
 
+Host gtx
+    HostName 172.17.72.154
+    ForwardX11 yes
+
 Host xavier
     HostName 172.17.72.162
     User nvidia
