@@ -1,7 +1,12 @@
 AddKeysToAgent yes
 
-Host *
-    XAuthLocation /usr/X11/bin/xauth
+Host rtx
+    HostName D319446
+    ForwardX11 yes
+
+Host xavier
+    HostName 172.17.72.162
+    User nvidia
 
 Host casemate
     User seznec
@@ -22,7 +27,7 @@ Host bebe2_out
     ForwardAgent yes
     ForwardX11 yes
     ForwardX11Timeout 596h
-    ProxyJump casemate
+    # ProxyJump casemate
 
 Host president_out
     user seznec
@@ -34,7 +39,7 @@ Host president_out
     ForwardAgent yes
     ForwardX11 yes
     ForwardX11Timeout 596h
-    ProxyJump casemate
+    # ProxyJump casemate
 
 Host beta_out
    user seznec
@@ -46,8 +51,10 @@ Host beta_out
    ForwardAgent yes
    ForwardX11 yes
    ForwardX11Timeout 596h
-   ProxyJump casemate
+   # ProxyJump casemate
 
 Host bebe2
    user seznec
    hostname bebe2.l2s.centralesupelec.fr
+
+# vi: ft=sshconfig
