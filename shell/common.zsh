@@ -25,9 +25,9 @@ export REPORTTIME=30 # Say how long a command took, if it took more than 30 seco
 on_linux && setxkbmap -option caps:swapescape
 
 if on_linux; then
-    append_path_unique "$HOME/.local/kitty.app/bin/"
+    append_path_unique "$HOME/.local/kitty.app/bin"
 else
-    append_path_unique "$HOME/.local/kitty.app/Contents/MacOS/"
+    append_path_unique "$HOME/.local/kitty.app/Contents/MacOS"
 fi
 
 prepend_path_unique "$HOME/.local/bin"
