@@ -69,3 +69,6 @@ if on_linux; then
 else
     alias makep="make -j$(sysctl -n hw.ncpu)"
 fi
+
+alias icat="kitty +kitten icat"
+alias issh="kitty +kitten ssh"
