@@ -40,6 +40,9 @@ bindkey '^?' backward-delete-char
 bindkey '^[[3;5~' backward-delete-word
 # bindkey '^[[3~' backward-delete-word
 
+zmodload zsh/complist
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+
 # HISTORY options
 setopt bang_hist                # use ! for history
 setopt hist_allow_clobber       # if blocked by clobber, change it in history
